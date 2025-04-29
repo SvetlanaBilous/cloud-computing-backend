@@ -6,11 +6,13 @@ app = Flask(__name__)
 def hello_world():
     return "<p>Hello World from Svetlana!</p>"
 
-@app.route('/data', methods=['POST'])
-def get_data():
-    data = request.json
-    return {"message": "Data received", "data": data}
+@app.route('/sentiment', methods=['POST'])
+def get_sentiment():
+    input_data = request.json
+    print(input_data)
+
+    return {'input_data': input_data, 'message': 'hello!'}
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="5000", debug=True)
+    app.run(host="0.0.0.0", port="5000", debug=False)
 
