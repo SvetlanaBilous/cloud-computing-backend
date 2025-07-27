@@ -1,11 +1,11 @@
-from flask import Flask, request
+from  flask import Flask, request
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
     print('hello')
-    return "<p>Hello World from Svetlana UPDATE!</p>"
+    return "<p>Hello World from Svetlana UPDATE 27.7.!</p>"
 
 @app.route('/sentiment', methods=['POST'])
 def get_sentiment():
