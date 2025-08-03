@@ -10,7 +10,7 @@ def hello_world():
     print('hello')
     return "<p>Hello World from Svetlana UPDATE 2.8.</p>"
 
-@app.route('/sentiment', methods=['POST'])
+@app.route('/', methods=['POST'])
 def get_sentiment():
     input_data = request.json
     print(input_data)
