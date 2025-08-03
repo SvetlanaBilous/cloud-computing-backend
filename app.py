@@ -10,12 +10,12 @@ def hello_world():
     print('hello')
     return "<p>Hello World from Svetlana UPDATE 2.8.</p>"
 
-@app.route('/', methods=['POST'])
-def get_sentiment():
-    input_data = request.json
-    print(input_data)
-
-    return {'input_data': input_data, 'message': 'hello!'}
+# @app.route('/', methods=['POST'])
+# def get_sentiment():
+#    input_data = request.json
+#    print(input_data)
+#
+#    return {'input_data': input_data, 'message': 'hello!'}
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port="8080", debug=False)
