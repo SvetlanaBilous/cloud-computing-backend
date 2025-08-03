@@ -1,8 +1,8 @@
-from flask import Flask, request, jsonify
-from keras.models import load_model
-from PIL import Image, ImageOps
-import numpy as np
-import os
+from flask import Flask # request, jsonify
+# from keras.models import load_model
+# from PIL import Image, ImageOps
+# import numpy as np
+# import os
 app = Flask(__name__)
 
 @app.route("/")
