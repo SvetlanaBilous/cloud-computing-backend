@@ -4,6 +4,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app, origins=["https://cloud-computing-render.onrender.com"])
 
 @app.route("/", methods=["POST"])
 def analyze_sentiment():
