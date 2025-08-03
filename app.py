@@ -1,22 +1,32 @@
-from flask import Flask, request # jsonify
-# from keras.models import load_model
-# from PIL import Image, ImageOps
-# import numpy as np
-# import os
+from flask import Flask, request, jsonify
+from textblob import TextBlob
+import os
+
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    print('hello')
-    return "<p>Hello World from Svetlana CHANGE AGAIN!</p>"
-
-@app.route('/sentiment', methods=['POST'])
-def get_sentiment():
+@app.route("/", methods=["POST"])
+def analyze_sentiment():
     input_data = request.json
-    print(input_data)
+    text = input_data.get('text', '')
+    if not text:
+        return jsonify({'error': 'No text provided'}), 400
 
-    return {'input_data': input_data, 'message': 'hello!'}
+    blob = TextBlob(text)
+    polarity = blob.sentiment.polarity
+
+    if polarity > 0.2:
+        sentiment = 'positive'
+    elif polarity < -0.2:
+        sentiment = 'negative'
+    else:
+        sentiment = 'neutral'
+
+    return jsonify({
+        'class': sentiment,
+        'confidence': round(abs(polarity), 3),
+        'input_text': text
+    })
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port="8080", debug=False)
-
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
