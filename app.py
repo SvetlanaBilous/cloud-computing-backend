@@ -29,6 +29,19 @@ def analyze_sentiment():
         'input_text': text
     })
 
+
+@app.route('/status', methods=['GET'])
+def status():
+    return '''
+        <html>
+            <head><title>Docker Status</title></head>
+            <body style="font-family:sans-serif; text-align:center; padding-top:50px;">
+                <h1>✅ Backend is running inside Docker!</h1>
+                <p>If you see this page, the Docker container is working as expected.</p>
+            </body>
+        </html>
+    '''
+
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port)

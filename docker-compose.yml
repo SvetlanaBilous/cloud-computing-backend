@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - FLASK_ENV=development
+      - DEBUG=True
+    networks:
+      - backend-network
+    volumes:
+      - .:/code
+
+networks:
+  backend-network:
+    driver: bridge
