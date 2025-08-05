@@ -36,7 +36,7 @@ def status():
         <html>
             <head><title>Docker Status</title></head>
             <body style="font-family:sans-serif; text-align:center; padding-top:50px;">
-                <h1>✅ Backend is running inside Docker!</h1>
+                <h1> Backend is running inside Docker!</h1>
                 <p>If you see this page, the Docker container is working as expected.</p>
             </body>
         </html>
